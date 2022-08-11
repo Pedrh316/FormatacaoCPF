@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="text" inputmode="decimal" placeholder="digite seu cpf" maxlength="11"/>
+        <p></p>
+        <script>
+            let $input = document.querySelector("input");
+            let $p = document.querySelector("p");
+            $input.addEventListener("keyup", verificarCPF);
+            function verificarCPF(e) {            
+                let valorInput = $input.value;
+                
+                if(valorInput.length > 10 && !isNaN(valorInput)){
+                    let result = valorInput.match(/\d{3}/g)
+                    result = result.join('.');
+                    let lastDigits = '-' + result.slice(-2)
+                    let CPF = result + lastDigits;
+                    $input.value = CPF                    
+                }                
+            }                                             
+        </script>
+    </body>
+</html>
